@@ -9,8 +9,9 @@
  * warranty, and with no claim as to its suitability for any purpose.
  */
 #include <string>
-#include <iostream>
-#include <codecvt>
+#include <iostream>   // std::cout, std::ios, std::wostream
+#include <codecvt>    // std::codecvt_utf8
+#include <locale>     // std::wbuffer_convert
 using namespace std;
 
 int main()
