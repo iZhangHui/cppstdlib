@@ -31,7 +31,7 @@ class Item {
     float getPrice () const {
         return price;
     }
-    float setPrice (float p) {
+    void setPrice (float p) {
         price = p;
     }
 };

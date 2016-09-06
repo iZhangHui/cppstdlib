@@ -31,7 +31,7 @@ class Item {
     float getPrice () const {
         return price;
     }
-    float setPrice (float p) {
+    void setPrice (float p) {
         price = p;
     }
 };
@@ -74,7 +74,7 @@ int main()
               [] (shared_ptr<Item>& elem) {
                   elem->setPrice(elem->getPrice() * 2);
               });
-    
+
     // replace second bestseller by first item with name "Pizza"
     bestsellers[1] = *(find_if(allItems.begin(),allItems.end(),
                                [] (shared_ptr<Item> elem) {
