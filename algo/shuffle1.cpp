@@ -9,6 +9,7 @@
  * warranty, and with no claim as to its suitability for any purpose.
  */
 #include <cstdlib>
+#include <random>
 #include "algostuff.hpp"
 using namespace std;
 
