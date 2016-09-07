@@ -12,6 +12,7 @@
 #include <string>
 #include <set>
 #include <deque>
+#include <vector>
 #include <algorithm>
 #include <memory>
 
