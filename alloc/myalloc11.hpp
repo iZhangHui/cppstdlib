@@ -9,11 +9,19 @@
  * warranty, and with no claim as to its suitability for any purpose.
  */
 #include <cstddef>    // for size_t
+#include <memory>
+#include <limits>
 
 template <typename T>
 class MyAlloc {
   public:
     // type definitions
+    typedef std::size_t size_type;
+    typedef std::ptrdiff_t difference_type;
+    typedef T* pointer;
+    typedef const T* const_pointer;
+    typedef T& reference;
+    typedef const T& const_reference;
     typedef T value_type;
 
     // constructors
@@ -36,6 +44,39 @@ class MyAlloc {
         // deallocate memory with global delete
         ::operator delete(p);
     }
+
+    // return address of values
+    T* address (T& value) const {
+        return &value;
+    }
+
+    const T* address (const T& value) const {
+        return &value;
+    }
+
+    // return maximum number of elements that can be allocated
+    std::size_t max_size () const throw() {
+        // for numeric_limits see Section 5.3, page 115
+        return std::numeric_limits<std::size_t>::max() / sizeof(T);
+    }
+
+    // initialize elements of allocated storage p with value value
+    void construct (T* p, const T& value) {
+        // initialize memory with placement new
+        ::new((void*)p)T(value);
+    }
+
+    // destroy elements of initialized storage p
+    void destroy (T* p) {
+        // destroy objects by calling their destructor
+        p->~T();
+    }
+
+    // rebind allocator to type U
+    template <typename U>
+    struct rebind {
+        typedef MyAlloc<U> other;
+    };
 };
 
 // return that all specializations of this allocator are interchangeable
