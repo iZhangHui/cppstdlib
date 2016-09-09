@@ -12,6 +12,9 @@
 #include <fstream>   // for ofstream
 #include <memory>    // for shared_ptr
 #include <cstdio>    // for remove()
+#include <iostream>
+
+using namespace std;
 
 class FileDeleter
 {
@@ -20,10 +23,12 @@ class FileDeleter
   public:
     FileDeleter (const std::string& fn)
      : filename(fn) {
+      cout << "FileDeleter constructor." << endl;
     }
     void operator () (std::ofstream* fp) {
         delete fp;                     // close file
         std::remove(filename.c_str()); // delete file
+        cout << "delet file: " << filename << endl;
     }
 };
 
@@ -33,4 +38,8 @@ int main()
     std::shared_ptr<std::ofstream> fp(new std::ofstream("tmpfile.txt"),
                                       FileDeleter("tmpfile.txt"));
     //...
+    cout << "===========================" << endl;
+
+    auto deleter = FileDeleter("hello_world.cpp");
+    deleter(new std::ofstream("hello_world.cpp"));
 }
