@@ -18,10 +18,18 @@ int main()
 {
     // create a four-element tuple
     // - elements are initialized with default value (0 for fundamental types)
-    tuple<string,int,int,complex<double>> t;
+    // tuple<string,int,int,complex<double>> t;
+    tuple<string,int,int,complex<double>> t("tuple", 1, 2, {3.14, 1.23});
+    cout << get<0>(t) << " ";
+    cout << get<1>(t) << " ";
+    cout << get<2>(t) << " ";
+    cout << get<3>(t) << " ";
+    cout << get<3>(t).real() << " ";
+    cout << get<3>(t).imag() << " ";
+    cout << endl;
 
     // create and initialize a tuple explicitly
-    tuple<int,float,string> t1(41,6.3,"nico");
+    tuple<int,float,string> t1(41, 6.3, "nico");
 
     // "iterate" over elements:
     cout << get<0>(t1) << " ";
@@ -32,10 +40,10 @@ int main()
     // create tuple with make_tuple()
     // - auto declares t2 with type of right-hand side
     // - thus, type of t2 is tuple
-    auto t2 = make_tuple(22,44,"nico");
+    auto t2 = make_tuple(22, 44, "nico");
 
     // assign second value in t2 to t1
-    get<1>(t1) = get<1>(t2); 
+    get<1>(t1) = get<1>(t2);
 
     // comparison and assignment
     // - including type conversion from tuple<int,int,const char*>
