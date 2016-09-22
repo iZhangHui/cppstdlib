@@ -8,9 +8,12 @@
  * This software is provided "as is" without express or implied
  * warranty, and with no claim as to its suitability for any purpose.
  */
+#include <cmath>
+
 #include <iostream>
 #include <limits>
 #include <string>
+
 using namespace std;
 
 int main()
@@ -21,6 +24,7 @@ int main()
    // print maximum of integral types
    cout << "max(short): " << numeric_limits<short>::max() << endl;
    cout << "max(int):   " << numeric_limits<int>::max() << endl;
+   cout << "pow(2, 32): " << pow(2, 31) << endl;
    cout << "max(long):  " << numeric_limits<long>::max() << endl;
    cout << endl;
 
