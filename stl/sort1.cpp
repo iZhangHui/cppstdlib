@@ -40,7 +40,7 @@ inline string Person::lastname() const {
     return ln;
 }
 
-ostream& operator<< (ostream& s, const Person& p)
+ostream& operator<<(ostream& s, const Person& p)
 {
     s << "[" << p.firstname() << " " << p.lastname() << "]";
     return s;
@@ -71,7 +71,7 @@ int main()
     Person p5("lucas","otto");
     Person p6("lucas","arm");
     Person p7("anica","holle");
-    
+
     // insert person into collection coll
     deque<Person> coll;
     coll.push_back(p1);

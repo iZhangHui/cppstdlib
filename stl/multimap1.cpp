@@ -11,11 +11,13 @@
 #include <map>
 #include <string>
 #include <iostream>
+#include <memory>
 using namespace std;
 
 int main()
 {
     multimap<int,string> coll;        // container for int/string values
+    // map<int,string> coll;          // container for int/string values
 
     // assign some elements in arbitrary order
     // - a value with key 1 gets inserted twice
@@ -30,6 +32,21 @@ int main()
     // print all element values
     // - element member second is the value
     for (auto elem : coll) {
+        cout << elem.second << ' ';
+    }
+    cout << endl;
+
+    unique_ptr<multimap<int, string>> ptr(new multimap<int, string>);
+
+    ptr->insert(make_pair(5, "tagged"));
+    ptr->insert(make_pair(2, "a"));
+    ptr->insert(make_pair(1, "this"));
+    ptr->insert(make_pair(4, "of"));
+    ptr->insert(make_pair(6, "string"));
+    ptr->insert(make_pair(1, "is"));
+    ptr->insert(make_pair(3, "multimap"));
+
+    for (auto elem : *ptr) {
         cout << elem.second << ' ';
     }
     cout << endl;

@@ -22,19 +22,22 @@ int main()
     list<int> coll1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     // copy the elements of coll1 into coll2 by appending them
+    // back_inserter => push_back(value)
     vector<int> coll2;
-    copy (coll1.cbegin(), coll1.cend(),    // source
-          back_inserter(coll2));           // destination
+    copy(coll1.cbegin(), coll1.cend(),    // source
+         back_inserter(coll2));           // destination
 
     // copy the elements of coll1 into coll3 by inserting them at the front
     // - reverses the order of the elements
+    // front_inserter => push_front(value)
     deque<int> coll3;
-    copy (coll1.cbegin(), coll1.cend(),    // source
-          front_inserter(coll3));          // destination
+    copy(coll1.cbegin(), coll1.cend(),    // source
+         front_inserter(coll3));          // destination
 
     // copy elements of coll1 into coll4
     // - only inserter that works for associative collections
+    // inserter =>insert(pos, value)
     set<int> coll4;
-    copy (coll1.cbegin(), coll1.cend(),    // source
-          inserter(coll4,coll4.begin()));  // destination
+    copy(coll1.cbegin(), coll1.cend(),    // source
+         inserter(coll4,coll4.begin()));  // destination
 }

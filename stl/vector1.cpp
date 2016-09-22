@@ -25,5 +25,12 @@ int main()
     for (int i=0; i<coll.size(); ++i) {
         cout << coll[i] << ' ';
     }
+
+    cout << endl;
+
+    for (const auto& item : coll) {
+        cout << item << ' ';
+    }
+
     cout << endl;
 }

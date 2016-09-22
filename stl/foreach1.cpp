@@ -9,27 +9,39 @@
  * warranty, and with no claim as to its suitability for any purpose.
  */
 #include <vector>
+#include <string>
 #include <algorithm>
 #include <iostream>
 using namespace std;
 
 // function that prints the passed argument
-void print (int elem)
+void print(int elem)
 {
     cout << elem << ' ';
 }
 
+// void print(const string& elem)
+// {
+//     cout << elem << ' ';
+// }
+
 int main()
 {
     vector<int> coll;
+    // vector<string> str_coll = {"c++", "std", "lib"};
 
     // insert elements from 1 to 9
-    for (int i=1; i<=9; ++i) {
+    for (int i = 1; i <= 9; ++i) {
         coll.push_back(i);
     }
 
     // print all elements
-    for_each (coll.cbegin(), coll.cend(),  // range
-              print);                      // operation
+    for_each(coll.cbegin(), coll.cend(),  // range
+             print);                      // operation
     cout << endl;
+
+    // print all elements
+    // for_each(str_coll.cbegin(), str_coll.cend(),  // range
+    //           print);                             // operation
+    // cout << endl;
 }

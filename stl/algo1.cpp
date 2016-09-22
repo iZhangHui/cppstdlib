@@ -25,15 +25,22 @@ int main()
     cout << "max: "  << *maxpos << endl;
 
     // sort all elements
-    sort (coll.begin(), coll.end());
+    sort(coll.begin(), coll.end());
+
+    // print all elements
+    for (auto elem : coll) {
+        cout << elem << ' ';
+    }
+    cout << endl;
 
     // find the first element with value 3
     // - no cbegin()/cend() because later we modify the elements pos3 refers to
-    auto pos3 = find (coll.begin(), coll.end(),  // range
-                      3);                        // value
+    // cbegin == const_iterator begin
+    auto pos3 = find(coll.begin(), coll.end(),  // range
+                      3);                       // value
 
     // reverse the order of the found element with value 3 and all following elements
-    reverse (pos3, coll.end());
+    reverse(pos3, coll.end());
 
     // print all elements
     for (auto elem : coll) {

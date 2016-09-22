@@ -20,7 +20,7 @@ int main()
 
     // RUNTIME ERROR:
     // - overwrites nonexisting elements in the destination
-    copy (coll1.cbegin(), coll1.cend(),   // source
-          coll2.begin());                 // destination
+    copy(coll1.cbegin(), coll1.cend(),   // source
+         coll2.begin());                 // destination
     //...
 }
