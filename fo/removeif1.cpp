@@ -15,20 +15,20 @@
 using namespace std;
 
 class Nth {    // function object that returns true for the nth call
+  public:
+    Nth(int n) : nth(n), count(0) {
+    }
+    bool operator()(int) {
+        return ++count == nth;
+    }
   private:
     int nth;       // call for which to return true
     int count;     // call counter
-  public:
-    Nth (int n) : nth(n), count(0) {
-    }
-    bool operator() (int) {
-        return ++count == nth;
-    }
 };
 
 int main()
 {
-    list<int> coll = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    list<int> coll = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     PRINT_ELEMENTS(coll,"coll:        ");
 
     // remove third element

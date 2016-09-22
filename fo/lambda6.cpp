@@ -17,12 +17,8 @@
 using namespace std;
 
 class Customer {
-  private:
-    string fname;
-    string lname;
-    long   no;
   public:
-    Customer (const string& fn, const string& ln, long n)
+    Customer(const string& fn, const string& ln, long n)
       : fname(fn), lname(ln), no(n) {
     }
     string firstname() const {
@@ -37,13 +33,18 @@ class Customer {
     friend ostream& operator << (ostream& strm, const Customer& c) {
         return strm << "[" << c.fname << "," << c.lname << "," << c.no << "]";
     }
+
+  private:
+    string fname;
+    string lname;
+    long   no;
 };
 
 int main()
 {
     // lambda for user-defined hash function
     auto hash = [] (const Customer& c) {
-        return hash_val(c.firstname(),c.lastname(),c.number());
+        return hash_val(c.firstname(), c.lastname(), c.number());
     };
 
     // lambda for user-defined equality criterion
@@ -52,10 +53,11 @@ int main()
     };
 
     // create unordered set with user-defined behavior
-    unordered_set<Customer,decltype(hash),decltype(eq)> custset(10,hash,eq);
-    // ERROR: unordered_set<Customer,function<size_t(Customer,Customer)>,decltype(eq)> custset(10,hash,eq);
+    unordered_set<Customer, decltype(hash), decltype(eq)> custset(10, hash, eq);
 
-    custset.insert(Customer("nico","josuttis",42));
+    // ERROR: unordered_set<Customer, function<size_t(Customer, Customer)>, decltype(eq)> custset(10, hash, eq);
+
+    custset.insert(Customer("nico", "josuttis", 42));
     PRINT_ELEMENTS(custset);
 
 }

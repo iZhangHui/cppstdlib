@@ -17,35 +17,40 @@ using namespace std;
 using namespace std::placeholders;
 
 class Person {
-  private:
-    string name;
   public:
-    Person (const string& n) : name(n) {
+    Person(const string& n) : name(n) {
     }
-    void print () const {
+    void print() const {
         cout << name << endl;
     }
-    void print2 (const string& prefix) const {
+    void print2(const string& prefix) const {
         cout << prefix << name << endl;
     }
+  private:
+    string name;
     //...
 };
 
 int main()
 {
-    vector<Person> coll
-            = { Person("Tick"), Person("Trick"), Person("Track") };
+    vector<Person> coll = {Person("Tick"), Person("Trick"), Person("Track")};
 
     // call member function print() for each person
-    for_each (coll.begin(), coll.end(),
-              bind(&Person::print,_1));
+    for_each(coll.begin(), coll.end(),
+             bind(&Person::print, _1));
+    cout << endl;
+
+    // mem_fn() adapter
+    for_each(coll.begin(), coll.end(),
+             mem_fn(&Person::print));
     cout << endl;
 
     // call member function print2() with additional argument for each person
-    for_each (coll.begin(), coll.end(),
-              bind(&Person::print2,_1,"Person: "));
+    for_each(coll.begin(), coll.end(),
+             bind(&Person::print2 ,_1, "Person: "));
     cout << endl;
 
     // call print2() for temporary Person
-    bind(&Person::print2,_1,"This is: ")(Person("nico"));
+    bind(&Person::print2, _1, "This is: ")(Person("nico"));
+
 }

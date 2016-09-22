@@ -36,4 +36,9 @@ int main()
                                   std::placeholders::_2,
                                   std::placeholders::_1);
     std::cout << "invdiv: " << inversDivide(49,7) << std::endl;
+
+    auto inversDivide2 = std::bind(std::divides<double>(),
+                                  std::placeholders::_1,
+                                  std::placeholders::_2);
+    std::cout << "invdiv: " << inversDivide2(48,7) << std::endl;
 }

@@ -16,18 +16,19 @@
 using namespace std;
 
 class IntSequence {
-  private:
-    int value;
   public:
     // constructor
-    IntSequence (int initialValue)
+    IntSequence(int initialValue)
      : value(initialValue) {
     }
 
     // "function call"
-    int operator() () {
-        return value++;
+    int operator()() {
+        // cout << value << endl;
+        return ++value;
     }
+  private:
+    int value;
 };
 
 int main()
@@ -45,22 +46,22 @@ int main()
     PRINT_ELEMENTS(coll);
 
     // insert values from 42 to 45
-    generate_n (back_inserter(coll),      // start
-                4,                        // number of elements
-                IntSequence(42));         // generates values
+    generate_n(back_inserter(coll),      // start
+             4,                        // number of elements
+             IntSequence(42));         // generates values
     PRINT_ELEMENTS(coll);
 
     // continue with first sequence
     // - pass function object by value
     //     so that it will continue with 5 again
-    generate_n (back_inserter(coll),      // start
-                4,                        // number of elements
-                seq);                     // generates values
+    generate_n(back_inserter(coll),      // start
+               4,                        // number of elements
+               seq);                     // generates values
     PRINT_ELEMENTS(coll);
-    
+
     // continue with first sequence again
-    generate_n (back_inserter(coll),      // start
-                4,                        // number of elements
-                seq);                     // generates values
+    generate_n(back_inserter(coll),      // start
+               4,                        // number of elements
+               seq);                     // generates values
     PRINT_ELEMENTS(coll);
 }

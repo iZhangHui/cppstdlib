@@ -41,7 +41,7 @@ inline string Person::lastname() const {
     return ln;
 }
 
-ostream& operator<< (ostream& s, const Person& p)
+ostream& operator<<(ostream& s, const Person& p)
 {
     s << "[" << p.firstname() << " " << p.lastname() << "]";
     return s;
@@ -53,14 +53,14 @@ ostream& operator<< (ostream& s, const Person& p)
  */
 class PersonSortCriterion {
   public:
-    bool operator() (const Person& p1, const Person& p2) const {
+    bool operator()(const Person& p1, const Person& p2) const {
         /* a person is less than another person
          * - if the last name is less
          * - if the last name is equal and the first name is less
          */
-        return p1.lastname()<p2.lastname() ||
-               (p1.lastname()==p2.lastname() &&
-                p1.firstname()<p2.firstname());
+        return p1.lastname() < p2.lastname() ||
+               (p1.lastname() == p2.lastname() &&
+                p1.firstname() < p2.firstname());
     }
 };
 
@@ -74,7 +74,7 @@ int main()
     Person p5("lucas","otto");
     Person p6("lucas","arm");
     Person p7("anica","holle");
-    
+
     // declare set type with special sorting criterion
     typedef set<Person,PersonSortCriterion> PersonSet;
 
@@ -91,9 +91,13 @@ int main()
     // do something with the elements
     // - in this case: output them
     cout << "set:" << endl;
-    PersonSet::iterator pos;
-    for (pos = coll.begin(); pos != coll.end(); ++pos) {
-        cout << *pos << endl;
+    // PersonSet::iterator pos;
+    // for (pos = coll.begin(); pos != coll.end(); ++pos) {
+    //     cout << *pos << endl;
+    // }
+
+    for (const auto& person : coll) {
+        cout << person << endl;
     }
 }
 

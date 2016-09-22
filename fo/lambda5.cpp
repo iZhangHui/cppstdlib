@@ -20,12 +20,12 @@ class Person {
   private:
     string name;
   public:
-    Person (const string& n) : name(n) {
+    Person(const string& n) : name(n) {
     }
-    void print () const {
+    void print() const {
         cout << name << endl;
     }
-    void print2 (const string& prefix) const {
+    void print2(const string& prefix) const {
         cout << prefix << name << endl;
     }
     //...
@@ -37,15 +37,15 @@ int main()
             = { Person("Tick"), Person("Trick"), Person("Track") };
 
     // call member function print() for each person
-    for_each (coll.begin(), coll.end(),
-              [] (const Person& p) {
-                  p.print();
-              });
+    for_each(coll.begin(), coll.end(),
+             [] (const Person& p) {
+                p.print();
+             });
     cout << endl;
 
     // call member function print2() with additional argument for each person
-    for_each (coll.begin(), coll.end(),
-              [] (const Person& p) {
-                  p.print2("Person: ");
-              });
+    for_each(coll.begin(), coll.end(),
+             [] (const Person& p) {
+                p.print2("Person: ");
+             });
 }
