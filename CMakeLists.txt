@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.8)
 
-# use clang++
-#set(CMAKE_CXX_COMPILER clang++)
+# use clang++ default
+# set(CMAKE_CXX_COMPILER clang++)
 
 project (Cppstdlib CXX)
 
@@ -18,7 +18,7 @@ else()
         message(ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support.")
 endif()
 
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
 
 # get source files
 file(GLOB_RECURSE sources RELATIVE ${PROJECT_SOURCE_DIR} "*.cpp")
@@ -29,7 +29,7 @@ foreach(src ${sources})
 	endif()
 endforeach()
 
-# # add the binary tree to the search path for include files
+# add the binary tree to the search path for include files
 include_directories("${PROJECT_SOURCE_DIR}/*")
 
 # set output path

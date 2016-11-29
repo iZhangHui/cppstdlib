@@ -1,4 +1,4 @@
-![](http://www.cppstdlib.com/pict/C%2B%2BStdLib_Cover_208x259.jpg)
+![](https://cloud.githubusercontent.com/assets/6889915/19406570/f04138e2-92ba-11e6-949f-b42755d98cb6.jpg)
 
 The C++ Standard Library - A Tutorial and Reference, 2nd Edition
 http://www.cppstdlib.com
