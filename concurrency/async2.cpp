@@ -21,7 +21,7 @@ void task1()
    // - BEWARE: this is bad practice
    list<int> v;
    while (true) {
-       for (int i=0; i<1000000; ++i) {
+       for (int i = 0; i < 1000000; ++i) {
            v.push_back(i);
        }
        cout.put('.').flush();
@@ -35,6 +35,8 @@ int main()
    cout << "- task2: wait for <return> and then for task1" << endl;
 
    auto f1 = async(task1);  // start task1() asynchronously (now or later or never)
+   // auto f1 = async([]{ throw bad_alloc(); });
+   // auto f1 = async(launch::async, []{ throw bad_alloc(); });
 
    cin.get();  // read a character (like getchar())
 
