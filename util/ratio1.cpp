@@ -26,6 +26,9 @@ int main()
    ratio<0> zero;
    cout << zero.num << "/" << zero.den << endl;
 
+   // ratio<1,0> error;
+   // cout << error.num << "/" << error.den << endl;
+
    typedef ratio<7,-3> Neg;
    cout << Neg::num << "/" << Neg::den << endl;
 }
