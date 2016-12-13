@@ -16,14 +16,14 @@
 #include <exception>
 using namespace std;
 
-int doSomething (char c)
+int doSomething(char c)
 {
     // random-number generator (use c as seed to get different sequences)
     std::default_random_engine dre(c);
-    std::uniform_int_distribution<int> id(10,1000);
- 
+    std::uniform_int_distribution<int> id(10, 1000);
+
     // loop to print character after a random period of time
-    for (int i=0; i<10; ++i) {
+    for (int i = 0; i < 10; ++i) {
         this_thread::sleep_for(chrono::milliseconds(id(dre)));
         cout.put(c).flush();
     }
@@ -31,12 +31,12 @@ int doSomething (char c)
     return c;
 }
 
-int func1 ()
+int func1()
 {
     return doSomething('.');
 }
 
-int func2 ()
+int func2()
 {
     return doSomething('+');
 }
@@ -48,6 +48,7 @@ int main()
 
     // start func1() asynchronously (now or later or never):
     std::future<int> result1(std::async(func1));
+    // std::future<int> result1(std::async(launch::async, func1));
 
     int result2 = func2();    // call func2() synchronously (here and now)
 
