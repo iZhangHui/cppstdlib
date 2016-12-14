@@ -53,4 +53,8 @@ foreach(src ${sources})
 		target_link_libraries(${target_name} rt)
 	endif()
 
+	if (${target_name} STREQUAL "concurrency_atomics1.exe")
+		target_link_libraries(${target_name} atomic)
+	endif()
+
 endforeach()

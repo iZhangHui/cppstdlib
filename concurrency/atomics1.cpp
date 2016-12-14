@@ -16,8 +16,9 @@
 
 long data;
 std::atomic<bool> readyFlag(false);
+std::atomic<long long> ll(0);
 
-void provider ()
+void provider()
 {
     // after reading a character
     std::cout << "<return>" << std::endl;
@@ -30,7 +31,7 @@ void provider ()
     readyFlag.store(true);
 }
 
-void consumer ()
+void consumer()
 {
     // wait for readiness and do something else
     while (!readyFlag.load()) {
@@ -44,7 +45,9 @@ void consumer ()
 
 int main()
 {
+    if (ll.is_lock_free())
+        std::cout << "Atomic not use lock." << std::endl;
     // start provider and consumer
-    auto p = std::async(std::launch::async,provider);
-    auto c = std::async(std::launch::async,consumer);
+    auto p = std::async(std::launch::async, provider);
+    auto c = std::async(std::launch::async, consumer);
 }
