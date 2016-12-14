@@ -15,7 +15,7 @@
 
 std::mutex printMutex;  // enable synchronized output with print()
 
-void print (const std::string& s)
+void print(const std::string& s)
 {
     std::lock_guard<std::mutex> l(printMutex);
     for (char c : s) {

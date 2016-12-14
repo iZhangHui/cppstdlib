@@ -15,12 +15,12 @@
 #include <stdexcept>
 using namespace std;
 
-int queryNumber ()
+int queryNumber()
 {
     // read number
     cout << "read number: ";
     int num;
-    cin >> num; 
+    cin >> num;
 
     // throw exception if none
     if (!cin) {
@@ -30,13 +30,13 @@ int queryNumber ()
     return num;
 }
 
-void doSomething (char c, shared_future<int> f)
+void doSomething(char c, shared_future<int> f)
 {
     try {
         // wait for number of characters to print
         int num = f.get();  // get result of queryNumber()
 
-        for (int i=0; i<num; ++i) {
+        for (int i = 0; i < num; ++i) {
             this_thread::sleep_for(chrono::milliseconds(100));
             cout.put(c).flush();
         }
@@ -54,9 +54,9 @@ int main()
         shared_future<int> f = async(queryNumber);
 
         // start three threads each processing this number in a loop
-        auto f1 = async(launch::async,doSomething,'.',f);
-        auto f2 = async(launch::async,doSomething,'+',f);
-        auto f3 = async(launch::async,doSomething,'*',f);
+        auto f1 = async(launch::async, doSomething, '.', f);
+        auto f2 = async(launch::async, doSomething, '+', f);
+        auto f3 = async(launch::async, doSomething, '*', f);
 
         // wait for all loops to be finished
         f1.get();
@@ -68,3 +68,4 @@ int main()
     }
     cout << "\ndone" << endl;
 }
+

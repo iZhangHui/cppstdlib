@@ -15,13 +15,13 @@
 #include <exception>
 using namespace std;
 
-void doSomething (int num, char c)
+void doSomething(int num, char c)
 {
     try {
         // random-number generator (use c as seed to get different sequences)
         default_random_engine dre(42*c);
         uniform_int_distribution<int> id(10,1000);
-        for (int i=0; i<num; ++i) {
+        for (int i = 0; i < num; ++i) {
             this_thread::sleep_for(chrono::milliseconds(id(dre)));
             cout.put(c).flush();
             //...
@@ -41,12 +41,12 @@ void doSomething (int num, char c)
 int main()
 {
     try {
-      thread t1(doSomething,5,'.');  // print five dots in separate thread
+      thread t1(doSomething, 5, '.');  // print five dots in separate thread
       cout << "- started fg thread " << t1.get_id() << endl;
 
       // print other characters in other background threads
-      for (int i=0; i<5; ++i) {
-          thread t(doSomething,10,'a'+i); // print 10 chars in separate thread
+      for (int i = 0; i < 5; ++i) {
+          thread t(doSomething, 10, 'a'+i); // print 10 chars in separate thread
           cout << "- detach started bg thread " << t.get_id() << endl;
           t.detach();  // detach thread into the background
       }

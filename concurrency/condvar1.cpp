@@ -13,7 +13,7 @@
 #include <future>
 #include <iostream>
 
-bool readyFlag; 
+bool readyFlag;
 std::mutex readyMutex;
 std::condition_variable readyCondVar;
 
@@ -36,6 +36,7 @@ void thread2()
     // wait until thread1 is ready (readyFlag is true)
     {
         std::unique_lock<std::mutex> ul(readyMutex);
+        // wait(unique_lock<std::mutex> &__lock)
         readyCondVar.wait(ul, []{ return readyFlag; });
     } // release lock
 
@@ -45,6 +46,6 @@ void thread2()
 
 int main()
 {
-    auto f1 = std::async(std::launch::async,thread1);
-    auto f2 = std::async(std::launch::async,thread2);
+    auto f1 = std::async(std::launch::async, thread1);
+    auto f2 = std::async(std::launch::async, thread2);
 }
