@@ -13,7 +13,7 @@
 #include <iomanip>
 
 template <typename C>
-void printClockData ()
+void printClockData()
 {
     using namespace std;
 
@@ -25,8 +25,8 @@ void printClockData ()
         typedef typename ratio_multiply<P,kilo>::type TT;
         cout << fixed << double(TT::num)/TT::den
              << " milliseconds" << endl;
-    }
-    else {
+
+    } else {
         // print as seconds
         cout << fixed << double(P::num)/P::den << " seconds" << endl;
     }

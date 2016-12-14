@@ -14,12 +14,12 @@
 #include <string>
 using namespace std;
 
-string asString (const chrono::system_clock::time_point& tp)
+string asString(const chrono::system_clock::time_point& tp)
 {
     time_t t = chrono::system_clock::to_time_t(tp); // convert to system time
     string ts = ctime(&t);                          // convert to calendar time
-    ts.resize(ts.size()-1);                         // skip trailing newline
-    return ts; 
+    ts.resize(ts.size() - 1);                       // skip trailing newline
+    return ts;
 }
 
 int main()

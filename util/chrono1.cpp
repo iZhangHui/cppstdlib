@@ -13,13 +13,13 @@
 #include <string>
 #include <iostream>
 
-std::string asString (const std::chrono::system_clock::time_point& tp)
+std::string asString(const std::chrono::system_clock::time_point& tp)
 {
     // convert to system time:
     std::time_t t = std::chrono::system_clock::to_time_t(tp);
     std::string ts = std::ctime(&t);    // convert to calendar time
-    ts.resize(ts.size()-1);             // skip trailing newline
-    return ts; 
+    ts.resize(ts.size() - 1);           // skip trailing newline
+    return ts;
 }
 
 int main()
