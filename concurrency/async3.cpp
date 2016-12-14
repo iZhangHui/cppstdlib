@@ -16,14 +16,14 @@
 #include <exception>
 using namespace std;
 
-void doSomething (char c)
+void doSomething(char c)
 {
     // random-number generator (use c as seed to get different sequences)
     default_random_engine dre(c);
     uniform_int_distribution<int> id(10,1000);
- 
+
     // loop to print character after a random period of time
-    for (int i=0; i<10; ++i) {
+    for (int i = 0; i < 10; ++i) {
         this_thread::sleep_for(chrono::milliseconds(id(dre)));
         cout.put(c).flush();
     }
