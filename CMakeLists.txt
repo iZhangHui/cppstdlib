@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 # use clang++ default
-#set(CMAKE_CXX_COMPILER clang++)
+# set(CMAKE_CXX_COMPILER clang++)
 
 project (Cppstdlib CXX)
 
@@ -18,7 +18,7 @@ project (Cppstdlib CXX)
 #         message(ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support.")
 # endif()
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
 
