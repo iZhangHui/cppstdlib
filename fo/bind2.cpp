@@ -37,7 +37,7 @@ int main()
 
     // call member function print() for each person
     for_each(coll.begin(), coll.end(),
-             bind(&Person::print, _1));
+             bind(&Person::print, _1)); // <<cppstdlib p492>>
     cout << endl;
 
     // mem_fn() adapter
@@ -47,7 +47,7 @@ int main()
 
     // call member function print2() with additional argument for each person
     for_each(coll.begin(), coll.end(),
-             bind(&Person::print2 ,_1, "Person: "));
+             bind(&Person::print2, _1, "Person: "));
     cout << endl;
 
     // call print2() for temporary Person

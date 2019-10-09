@@ -10,18 +10,15 @@
  */
 #include <functional>
 #include <iostream>
+using namespace std::placeholders;
 
 int main()
 {
-    auto plus10 = std::bind(std::plus<int>(),
-                            std::placeholders::_1,
-                            10);
+    auto plus10 = std::bind(std::plus<int>(), _1, 10);
     std::cout << "+10:    " << plus10(7) << std::endl;
 
     auto plus10times2 = std::bind(std::multiplies<int>(),
-                                  std::bind(std::plus<int>(),
-                                            std::placeholders::_1,
-                                            10),
+                                  std::bind(std::plus<int>(), _1, 10),
                                   2);
     std::cout << "+10 *2: " << plus10times2(7) << std::endl;
 
@@ -29,7 +26,7 @@ int main()
                           std::bind(std::multiplies<int>(),
                                     std::placeholders::_1,
                                     std::placeholders::_1),
-                          std::placeholders::_1);
+                                    std::placeholders::_1);
     std::cout << "x*x*x:  " << pow3(7) << std::endl;
 
     auto inversDivide = std::bind(std::divides<double>(),
@@ -38,7 +35,7 @@ int main()
     std::cout << "invdiv: " << inversDivide(49,7) << std::endl;
 
     auto inversDivide2 = std::bind(std::divides<double>(),
-                                  std::placeholders::_1,
-                                  std::placeholders::_2);
+                                   std::placeholders::_1,
+                                   std::placeholders::_2);
     std::cout << "invdiv: " << inversDivide2(48,7) << std::endl;
 }
