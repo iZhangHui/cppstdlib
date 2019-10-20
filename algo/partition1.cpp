@@ -23,15 +23,15 @@ int main()
    cout << endl;
 
    // move all even elements to the front
-   vector<int>::iterator pos1, pos2;
-   pos1 = partition(coll1.begin(), coll1.end(),         // range
-                    [](int elem){                        // criterion
-                        return elem%2==0;
-                    });
-   pos2 = stable_partition(coll2.begin(), coll2.end(),  // range
-                           [](int elem){                // criterion
-                               return elem%2==0;
-                           });
+   // vector<int>::iterator pos1, pos2;
+   auto pos1 = partition(coll1.begin(), coll1.end(),         // range
+                        [](int elem){                        // criterion
+                            return elem%2==0;
+                        });
+   auto pos2 = stable_partition(coll2.begin(), coll2.end(),  // range
+                                [](int elem){                // criterion
+                                    return elem%2==0;
+                                });
 
    // print collections and first odd element
    PRINT_ELEMENTS(coll1,"coll1: ");
