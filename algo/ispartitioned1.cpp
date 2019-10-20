@@ -22,16 +22,16 @@ int main()
                  };
 
     // check whether coll is partitioned in odd and even elements
-    if (is_partitioned (coll.cbegin(), coll.cend(),  // range
-                        isOdd)) {                    // predicate
+    if (is_partitioned(coll.cbegin(), coll.cend(),  // range
+                        isOdd)) {                   // predicate
         cout << "coll is partitioned" << endl;
 
         // find first even element:
-        auto pos = partition_point (coll.cbegin(),coll.cend(),
+        // The iterator past the end of the first partition within [first, last) or last if all elements satisfy p.
+        auto pos = partition_point(coll.cbegin(),coll.cend(),
                                     isOdd);
         cout << "first even element: " << *pos << endl;
-    }
-    else {
+    } else {
         cout << "coll is not partitioned" << endl;
     }
 }
